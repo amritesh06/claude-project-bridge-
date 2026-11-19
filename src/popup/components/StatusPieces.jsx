@@ -17,6 +17,7 @@ export const FILE_VIEW = {
 };
 
 export const EVIDENCE_LABEL = {
+  codeblock: 'Code in conversation',
   attachment: 'Attachment captured',
   mentioned: 'Mentioned only',
   manual: 'Added manually',

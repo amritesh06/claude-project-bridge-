@@ -135,9 +135,10 @@ export default function CapturePage({ claude, projects, onSave, navigate }) {
   const save = () => {
     try {
       const target = mode === 'existing' && existingId ? { mode: 'existing', id: existingId } : { mode: 'new', name };
-      const { projectId, replacedConversation } = onSave(capture, target);
-      toast.success(replacedConversation ? 'Conversation updated' : 'Saved to project');
-      navigate({ page: 'project', id: projectId, tab: capture.conversation ? 'conversations' : 'overview' });
+      const { projectId, replacedConversation, summary } = onSave(capture, target);
+      const found = summary ? ` Found ${summary.files} file${summary.files === 1 ? '' : 's'} and ${summary.tasks} task${summary.tasks === 1 ? '' : 's'}.` : '';
+      toast.success(`${replacedConversation ? 'Conversation updated.' : 'Saved to project.'}${found}`);
+      navigate({ page: 'project', id: projectId, tab: 'overview' });
     } catch (err) {
       toast.error(err.message);
     }
@@ -149,7 +150,7 @@ export default function CapturePage({ claude, projects, onSave, navigate }) {
   return (
     <div className="space-y-3">
       <div className="flex items-center gap-2">
-        <Button variant="ghost" size="sm" icon={ChevronLeft} aria-label="Back" className="-ml-2 !px-1.5" onClick={() => navigate({ page: 'dashboard' })} />
+        <Button variant="ghost" size="sm" icon={ChevronLeft} aria-label="Back" className="-ml-2 !px-1.5" onClick={() => navigate({ page: 'home' })} />
         <h2 className="text-[15px] font-semibold tracking-tight">Capture</h2>
       </div>
 

@@ -6,17 +6,6 @@ const now = Date.now();
 const H = 3_600_000;
 const D = 24 * H;
 
-export const SAMPLE_RESUME_PROMPT = `[SAMPLE DATA: this prompt was not generated from a real project]
-
-I'm continuing a software project that was started in another Claude account. Before writing any code:
-
-1. Read every document in the attached backup (PROJECT_OVERVIEW, PROJECT_CONTEXT, TECHNICAL_ARCHITECTURE, FILE_TRACKER, CURRENT_PROGRESS, NEXT_STEPS).
-2. Summarise the architecture back to me in your own words.
-3. Do not recreate anything marked as completed.
-4. Keep the existing naming conventions and folder structure.
-5. List any files marked "referenced but unavailable" and ask me for them.
-6. Continue from the last working point: "Writing pagination for GET /items; the cursor encoder in src/utils/cursor.js is unfinished."`;
-
 export const SAMPLE_PROJECTS = [
   {
     id: 'sample-inventory-api',
@@ -107,9 +96,4 @@ export const SAMPLE_PROJECTS = [
     conversations: [],
     context: [],
   },
-];
-
-export const SAMPLE_HISTORY = [
-  { id: 'h1', projectId: 'sample-inventory-api', at: now - 26 * H, size: 184_000, trigger: 'Manual', isSample: true },
-  { id: 'h2', projectId: 'sample-inventory-api', at: now - 5 * D, size: 142_000, trigger: 'Auto', isSample: true },
 ];
